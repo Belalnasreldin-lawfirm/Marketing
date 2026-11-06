@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بوابة النشر</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--m:#7b1e3a;--m2:#5a1229;--bg:#fbf7f8;--card:#fff;--rose:#f4e8ec;--bd:#eadde1;--tx:#3a2a30;--mu:#85727a}
+@media (prefers-color-scheme:dark){:root{--m:#c4506f;--m2:#8e2c47;--bg:#1d1317;--card:#27191f;--rose:#33212a;--bd:#43303a;--tx:#f3e8ec;--mu:#b9a2ab}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Cairo',system-ui,sans-serif;line-height:1.7}
+.w{max-width:720px;margin:0 auto;padding:14px 14px 90px}
+.hd{display:flex;align-items:center;gap:10px;padding:6px 0 10px}
+.hd img{height:42px;max-width:120px;object-fit:contain;background:#fff;border-radius:8px;padding:3px}
+.hd h1{font-size:19px;margin:0;color:var(--m);flex:1}
+.who{font-size:12px;color:var(--mu);text-align:left}
+.nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px}
+.nav button{flex:1;white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:14px;border-radius:20px;padding:6px 14px;cursor:pointer}
+.nav button.on{background:var(--m);color:#fff;border-color:var(--m)}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:12px}
+h2{font-size:16px;margin:0 0 8px;color:var(--m)}
+.h3{font-size:13px;color:var(--mu);margin:12px 0 6px}
+label{display:block;font-size:13px;color:var(--mu);margin:8px 0 4px}
+textarea,input[type=text],input[type=password],input[type=url],input:not([type]),select{width:100%;font:inherit;color:var(--tx);background:transparent;border:1px solid var(--bd);border-radius:10px;padding:9px}
+textarea{min-height:120px;resize:vertical}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.p{border:0;border-radius:12px;color:#fff;font:inherit;font-weight:800;padding:10px 6px;cursor:pointer;position:relative;background:var(--m)}
+.p small{display:block;font-weight:400;font-size:11px;opacity:.9}
+.p.fb,.p.li,.p.ig,.p.tw{background:var(--m)}
+.x{position:absolute;top:1px;left:6px;font-size:15px}
+.b{border:1px solid var(--bd);background:transparent;color:var(--tx);font:inherit;border-radius:10px;padding:7px 12px;cursor:pointer;text-decoration:none;display:inline-block;font-size:14px}
+.b.pr{background:var(--m);color:#fff;border-color:var(--m)}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.row:last-child{border:0}
+.row select{width:auto}
+.ck{display:inline-flex;align-items:center;gap:4px;font-size:13px;margin-left:10px;color:var(--tx)}
+.ck input{width:auto}
+img.pv{width:100%;border-radius:10px;border:1px solid var(--bd);display:block;margin-top:8px}
+.note{font-size:12.5px;color:var(--mu);margin:6px 0 0}
+.tag{display:inline-block;font-size:12px;border-radius:12px;padding:0 10px;background:var(--rose);color:var(--m)}
+.tag.ok{background:#e3f1e6;color:#2b6a3c}
+.hide{display:none!important}
+.err{color:#c0392b;font-size:13px;min-height:20px}
+.tx{white-space:pre-wrap;margin:6px 0}
+#bar{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:2px solid var(--m);padding:10px 14px;z-index:5;box-shadow:0 -4px 16px rgba(0,0,0,.12)}
+#bar .in{max-width:720px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#bar img{height:54px;border-radius:6px;border:1px solid var(--bd)}
+#t{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:var(--m2);color:#fff;padding:9px 18px;border-radius:24px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;max-width:90%;text-align:center;z-index:9}
+#t.s{opacity:1}
+canvas{display:none}
+</style>
+</head>
+<body>
+<div class="w">
+  <div class="hd"><img id="lg" class="hide" alt=""><h1>بوابة النشر</h1><div class="who hide" id="who"><div id="wn"></div><a href="#" id="out" style="color:var(--m)">خروج</a></div></div>
+
+  <div id="auth" class="hide">
+    <div class="c">
+      <h2 id="at"></h2>
+      <div id="nmw" class="hide"><label>الاسم الكامل</label><input id="lname"></div>
+      <label>اسم المستخدم</label><input id="lu" dir="ltr" autocomplete="username">
+      <label>كلمة المرور</label><input id="lp" type="password" dir="ltr" autocomplete="current-password">
+      <div class="err" id="lerr"></div>
+      <button class="b pr" id="lgo" style="width:100%"></button>
+    </div>
+  </div>
+
+  <div id="app" class="hide">
+    <div class="nav" id="nav"></div>
+
+    <!-- المهام -->
+    <div id="pg_tasks" class="pg"></div>
+
+    <!-- منشور جديد (رئيس مجلس الإدارة) -->
+    <div id="pg_newp" class="pg hide">
+      <div class="c">
+        <h2>منشور جديد</h2>
+        <textarea id="ptxt" placeholder="اكتب أو الصق نص المنشور…"></textarea>
+        <div class="g" style="margin-top:8px">
+          <label class="b" style="text-align:center;margin:0">رفع صورة<input type="file" id="pfile" accept="image/*" class="hide"></label>
+          <button class="b" id="pclr">إزالة الصورة</button>
+        </div>
+        <img id="pimg" class="pv hide" alt="">
+        <div class="note" id="pnote">يمكنك أيضًا تصميم صورة من تبويب «التصميم» ثم اختيار «استخدمها في منشور».</div>
+      </div>
+      <div class="c"><h2>انشر بنفسك</h2><div id="pgrid"></div></div>
+      <div class="c">
+        <h2>وزّع على الفريق حسب الاختصاص</h2>
+        <div id="dist"></div>
+        <div style="margin-top:10px"><button class="b pr" id="dsend">إرسال للفريق</button></div>
+      </div>
+    </div>
+
+    <!-- التصميم -->
+    <div id="pg_design" class="pg hide">
+      <div class="c">
+        <h2>تصميم صورة المنشور</h2>
+        <label>الخلفية</label>
+        <div class="g">
+          <button class="b on" id="bgf">التصميم الثابت (عنابي)</button>
+          <label class="b" style="text-align:center;margin:0">رفع صورة خلفية<input type="file" id="bgfile" accept="image/*" class="hide"></label>
+        </div>
+        <label>العنوان الرئيسي</label><input id="h1" value="نمو أعمالك يبدأ بقرار ذكي">
+        <label>العنوان الفرعي</label><input id="h2" value="استراتيجيات تسويق رقمي تصنع نتائج حقيقية">
+        <img id="im" class="pv" alt="">
+        <canvas id="cv" width="1200" height="627"></canvas>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="b pr" id="duse">استخدمها في منشور</button>
+          <button class="b" id="dcopy">نسخ الصورة</button>
+          <a class="b" id="dl" download="post.png">تحميل</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- الإدارة -->
+    <div id="pg_admin" class="pg hide">
+      <div class="c" id="a_ch">
+        <h2>الحسابات والصفحات</h2>
+        <div id="chl"></div>
+        <div class="h3">إضافة حساب أو صفحة</div>
+        <select id="ap"><option value="li">لينكد إن</option><option value="fb">فيسبوك</option><option value="ig">إنستجرام</option><option value="tw">تويتر / X</option></select>
+        <label>الاسم</label><input id="an" placeholder="مثال: صفحة الشركة">
+        <label>رابط الصفحة</label><input id="au" type="url" dir="ltr" placeholder="https://www.facebook.com/…">
+        <div style="margin-top:8px"><button class="b" id="aadd">إضافة</button></div>
+      </div>
+      <div class="c hide" id="a_team">
+        <h2>الفريق والاختصاصات</h2>
+        <div id="tl"></div>
+        <div class="h3">إضافة مستخدم</div>
+        <label>اسم المستخدم</label><input id="nu" dir="ltr">
+        <label>الاسم</label><input id="nn">
+        <label>كلمة مرور مؤقتة (8 أحرف فأكثر)</label><input id="np" dir="ltr">
+        <label>الدور</label>
+        <select id="nr"><option value="manager">مديرة التسويق الإلكتروني</option><option value="officer">مسئول تسويق</option></select>
+        <label>الاختصاص (المنصات)</label><div id="nsp"></div>
+        <div style="margin-top:8px"><button class="b" id="nadd">إضافة</button></div>
+      </div>
+      <div class="c hide" id="a_logo">
+        <h2>الشعار</h2>
+        <label class="b" style="margin:0">رفع الشعار<input type="file" id="lfile" accept="image/*" class="hide"></label>
+        <div class="note">يظهر في الأعلى وعلى الصور المصممة.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="bar" class="hide"><div class="in" id="barin"></div></div>
+<div id="t"></div>
+<script>
+const API_URL='ضع_رابط_Web_app_هنا';
+const $=id=>document.getElementById(id),E=encodeURIComponent;
+const PN={li:'لينكد إن',fb:'فيسبوك',ig:'إنستجرام',tw:'تويتر / X'},RN={chairman:'رئيس مجلس الإدارة',manager:'مديرة التسويق',officer:'مسئول تسويق'};
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const toast=m=>{const t=$('t');t.textContent=m;t.className='s';clearTimeout(toast.i);toast.i=setTimeout(()=>t.className='',3200)};
+let tok=null;try{tok=localStorage.getItem('pg_tok')}catch(e){}
+let me=null,chans=[],team=[],tasks=[],logo='',logoImg=null,draftImg=null,bgImg=null,imgCache={};
+
+function api(fn,...args){
+  const fail=m=>Promise.reject(new Error(m));
+  const handle=r=>{if(r&&r.error){if(r.error==='AUTH'&&me){try{localStorage.removeItem('pg_tok')}catch(e){}location.reload()}throw new Error(r.error==='AUTH'?'انتهت الجلسة':r.error)}return r&&r.data};
+  if(API_URL.indexOf('https://')===0)
+    return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,token:tok,args})}).then(r=>r.json()).then(handle,()=>fail('تعذّر الاتصال بالخادم'));
+  if(typeof google!=='undefined'&&google.script)
+    return new Promise((res,rej)=>google.script.run.withSuccessHandler(r=>{try{res(handle(r))}catch(e){rej(e)}}).withFailureHandler(()=>rej(new Error('تعذّر الاتصال بالخادم'))).api(fn,tok,args));
+  return fail('ضع رابط Apps Script في أول الملف (API_URL)');
+}
+
+/* ---------- images ---------- */
+function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src})}
+function fileToPng(file,maxW){return new Promise((res,rej)=>{const r=new FileReader();r.onload=async()=>{try{
+  const i=await loadImg(r.result);let w=Math.min(i.width,maxW),h=Math.round(i.height*w/i.width);
+  const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0,w,h);
+  let d=c.toDataURL('image/png');
+  if(d.length>3.2e6){w=Math.round(w*.7);h=Math.round(h*.7);c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0,w,h);d=c.toDataURL('image/png')}
+  res(d)}catch(e){rej(e)}};r.onerror=rej;r.readAsDataURL(file)})}
+const toBlob=d=>fetch(d).then(r=>r.blob());
+
+/* ---------- auth ---------- */
+let setupMode=false;
+async function start(){
+  try{
+    const s=await api('status');setupMode=s.setup;if(s.logo)setLogo(s.logo);
+    if(tok){try{me=await api('me');return enter()}catch(e){}}
+    $('auth').classList.remove('hide');
+    $('at').textContent=setupMode?'الإعداد الأول: أنشئ حساب رئيس مجلس الإدارة':'تسجيل الدخول';
+    $('nmw').classList.toggle('hide',!setupMode);$('lgo').textContent=setupMode?'إنشاء الحساب':'دخول';
+  }catch(e){$('auth').classList.remove('hide');$('at').textContent=e.message}
+}
+function setLogo(d){logo=d;$('lg').src=d;$('lg').classList.remove('hide');loadImg(d).then(i=>{logoImg=i;drawD()}).catch(()=>{})}
+$('lgo').onclick=async()=>{
+  $('lerr').textContent='';
+  try{
+    if(setupMode)await api('setup',$('lu').value,$('lname').value,$('lp').value);
+    tok=await api('login',$('lu').value,$('lp').value);
+    try{localStorage.setItem('pg_tok',tok)}catch(e){}
+    me=await api('me');$('lp').value='';enter();
+  }catch(e){$('lerr').textContent=e.message}
+};
+['lu','lp'].forEach(i=>$(i).addEventListener('keydown',e=>{if(e.key==='Enter')$('lgo').click()}));
+$('out').onclick=async e=>{e.preventDefault();try{await api('logout')}catch(x){}try{localStorage.removeItem('pg_tok')}catch(x){}location.reload()};
+
+/* ---------- shell ---------- */
+const isC=()=>me.role==='chairman',isCM=()=>me.role==='chairman'||me.role==='manager';
+async function enter(){
+  $('auth').classList.add('hide');$('app').classList.remove('hide');$('who').classList.remove('hide');
+  $('wn').textContent=me.name+' – '+RN[me.role];
+  const tabs=[['tasks','المهام']];if(isC())tabs.push(['newp','منشور جديد']);tabs.push(['design','التصميم']);if(isCM())tabs.push(['admin','الإدارة']);
+  const nav=$('nav');nav.textContent='';
+  tabs.forEach(([k,t])=>{const b=el('button','',t);b.dataset.k=k;b.onclick=()=>go(k);nav.appendChild(b)});
+  $('a_team').classList.toggle('hide',!isC());$('a_logo').classList.toggle('hide',!isC());
+  buildSpec($('nsp'),'');
+  await Promise.all([loadCh(),loadTasks(),isC()?loadTeam():0]);
+  go('tasks');drawD();
+}
+function go(k){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.add('hide'));$('pg_'+k).classList.remove('hide');
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+  if(k==='tasks')loadTasks();
+  if(k==='newp'){renderDist();renderPgrid()}
+  if(k==='design')drawD();
+}
+
+/* ---------- publish (one click) ---------- */
+function copyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t).catch(()=>legacy(t));
+  return legacy(t);
+}
+function legacy(t){return new Promise((res,rej)=>{try{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();ok?res():rej()}catch(e){rej(e)}})}
+function copyImg(imgP,text){
+  if(!(window.ClipboardItem&&navigator.clipboard&&navigator.clipboard.write))return Promise.reject();
+  const it={'image/png':imgP.then(toBlob)};if(text)it['text/plain']=new Blob([text],{type:'text/plain'});
+  return navigator.clipboard.write([new ClipboardItem(it)]);
+}
+function gate(p,c,text){
+  let u=c.url||'',inUrl=false;
+  if(p==='tw'){u='https://twitter.com/intent/tweet?text='+E(text);inUrl=true}
+  else if(p==='li'&&!u){u='https://www.linkedin.com/feed/?shareActive=true&text='+E(text);inUrl=true}
+  else if(!u)u=p==='fb'?'https://www.facebook.com/':'https://www.instagram.com/';
+  return {u,inUrl};
+}
+// يجب أن يعمل بالكامل داخل نفس نقرة المستخدم
+function publish(p,c,getPost){
+  const post=getPost(),text=post.text||'',imgP=post.imgP;
+  if(!text&&!imgP){toast('لا يوجد محتوى للنشر');return}
+  const g=gate(p,c,text);
+  let cp;
+  if(imgP)cp=copyImg(imgP,g.inUrl?'':text).catch(()=>copyText(text));
+  else cp=copyText(text);
+  window.open(g.u,'_blank','noopener');
+  cp.then(()=>toast(imgP?(g.inUrl?'فُتحت النافذة والنص جاهز — الصق (Ctrl+V) لإضافة الصورة':'فُتحت النافذة — الصق (Ctrl+V) لإضافة الصورة والنص'):'فُتحت النافذة وتم نسخ النص — الصقه'),()=>toast('فُتحت النافذة — استخدم الأزرار بالأسفل لنسخ النص/الصورة'));
+  showBar(text,imgP);
+}
+function showBar(text,imgP){
+  const b=$('barin');b.textContent='';$('bar').classList.remove('hide');
+  if(imgP){const im=el('img');imgP.then(d=>{im.src=d;dl.href=d});b.appendChild(im)}
+  const bt=el('button','b','نسخ النص');bt.onclick=()=>copyText(text).then(()=>toast('تم نسخ النص'),()=>toast('تعذّر النسخ'));b.appendChild(bt);
+  const dl=el('a','b','تحميل الصورة');dl.download='post.png';
+  if(imgP){
+    const bi=el('button','b','نسخ الصورة');bi.onclick=()=>copyImg(imgP,'').then(()=>toast('تم نسخ الصورة'),()=>toast('اضغط مطولًا على الصورة لحفظها'));b.appendChild(bi);
+    b.appendChild(dl);
+    if(navigator.canShare&&navigator.share){const bs=el('button','b','مشاركة');bs.onclick=async()=>{try{const f=new File([await imgP.then(toBlob)],'post.png',{type:'image/png'});await navigator.share({files:[f],text})}catch(e){}};b.appendChild(bs)}
+  }
+  const bx=el('button','b','إغلاق');bx.onclick=()=>$('bar').classList.add('hide');b.appendChild(bx);
+}
+function pubGrid(platforms,getPost){
+  const box=el('div');
+  const all=[];platforms.forEach(p=>{chans.filter(c=>c.platform===p).forEach(c=>all.push({p,c,n:c.name,s:'يفتح الصفحة'}));all.push({p,c:{},n:PN[p],s:p==='li'||p==='tw'?'يفتح نافذة النشر':'يفتح المنصة'})});
+  const g=el('div','g');
+  all.forEach(x=>{const b=el('button','p '+x.p,x.n);b.appendChild(el('small','',x.s));b.onclick=()=>publish(x.p,x.c,getPost);g.appendChild(b)});
+  box.appendChild(g);return box;
+}
+
+/* ---------- tasks ---------- */
+async function loadTasks(){try{tasks=await api('tasks');renderTasks()}catch(e){toast(e.message)}}
+function renderTasks(){
+  const box=$('pg_tasks');box.textContent='';
+  if(!tasks.length){const c=el('div','c');c.appendChild(el('p','note',isC()?'لم توزّع أي منشورات بعد. أنشئ منشورًا من تبويب «منشور جديد».':'لا توجد منشورات موجّهة إليك حاليًا.'));box.appendChild(c);return}
+  tasks.forEach(t=>{
+    const c=el('div','c'),top=el('div','row');
+    top.appendChild(el('span','tag'+(t.status==='done'?' ok':''),t.status==='done'?'تم النشر':'جديد'));
+    top.appendChild(el('span','note',(isC()?t.toName+' · ':'')+new Date(t.ts).toLocaleDateString('ar-EG')+' · '+t.platforms.split(',').map(p=>PN[p]).join('، ')));
+    c.appendChild(top);c.appendChild(el('div','tx',t.text));
+    let imgP=null;
+    if(t.hasImage){
+      const im=el('img','pv');c.appendChild(im);
+      imgP=imgCache[t.id]?Promise.resolve(imgCache[t.id]):api('taskImage',t.id).then(d=>{imgCache[t.id]=d;return d});
+      imgP.then(d=>im.src=d).catch(()=>{});
+    }
+    if(t.to===me.username&&t.status!=='done'){
+      c.appendChild(el('div','h3','انشر بضغطة واحدة'));
+      c.appendChild(pubGrid(t.platforms.split(','),()=>({text:t.text,imgP})));
+    }
+    const act=el('div','row');
+    if(t.to===me.username&&t.status!=='done'){const b=el('button','b pr','تم النشر ✓');b.onclick=async()=>{try{await api('doneTask',t.id);loadTasks()}catch(e){toast(e.message)}};act.appendChild(b)}
+    if(isC()){const d=el('button','b','حذف');d.onclick=async()=>{if(confirm('حذف هذه المهمة؟')){try{await api('delTask',t.id);loadTasks()}catch(e){toast(e.message)}}};act.appendChild(d)}
+    if(act.children.length)c.appendChild(act);
+    box.appendChild(c);
+  });
+}
+
+/* ---------- new post (chairman) ---------- */
+function setDraft(d){draftImg=d;$('pimg').src=d||'';$('pimg').classList.toggle('hide',!d)}
+$('pfile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{setDraft(await fileToPng(f,1200))}catch(x){toast('تعذّر قراءة الصورة')}e.target.value=''};
+$('pclr').onclick=()=>setDraft(null);
+const curPost=()=>({text:$('ptxt').value.trim(),imgP:draftImg?Promise.resolve(draftImg):null});
+function renderPgrid(){const b=$('pgrid');b.textContent='';b.appendChild(pubGrid(['li','fb','ig','tw'],curPost))}
+function buildSpec(box,sel){box.textContent='';const s=(sel||'').split(',');['li','fb','ig','tw'].forEach(p=>{const l=el('label','ck');const i=document.createElement('input');i.type='checkbox';i.value=p;i.checked=s.indexOf(p)>=0;l.append(i,PN[p]);box.appendChild(l)})}
+const getSpec=box=>[...box.querySelectorAll('input:checked')].map(i=>i.value).join(',');
+function renderDist(){
+  const box=$('dist');box.textContent='';
+  if(!team.length){box.appendChild(el('p','note','أضف أعضاء الفريق أولًا من تبويب «الإدارة».'));return}
+  team.forEach(u=>{
+    const r=el('div','row'),l=el('label','ck');const cb=document.createElement('input');cb.type='checkbox';cb.dataset.u=u.username;l.append(cb,u.name);
+    const sp=el('div');buildSpec(sp,u.specialty);sp.dataset.u=u.username;r.append(l,sp);box.appendChild(r)});
+}
+$('dsend').onclick=async()=>{
+  const assigns=[];$('dist').querySelectorAll('.row').forEach(r=>{const cb=r.querySelector('input[data-u]');if(cb&&cb.checked){const pl=getSpec(r.querySelector('div'));if(pl)assigns.push({to:cb.dataset.u,platforms:pl})}});
+  try{await api('createPost',$('ptxt').value,draftImg,assigns);toast('تم الإرسال للفريق');$('ptxt').value='';setDraft(null);await loadTasks();go('tasks')}catch(e){toast(e.message)}
+};
+
+/* ---------- admin ---------- */
+async function loadCh(){chans=await api('channels');renderCh()}
+function renderCh(){
+  const box=$('chl');box.textContent='';
+  if(!chans.length)box.appendChild(el('p','note','لا توجد صفحات مضافة بعد.'));
+  chans.forEach(c=>{const r=el('div','row');r.appendChild(el('span','',PN[c.platform]+' – '+c.name));
+    const d=el('button','b','حذف');d.onclick=async()=>{if(confirm('حذف «'+c.name+'»؟')){try{await api('delChannel',c.id);loadCh()}catch(e){toast(e.message)}}};r.appendChild(d);box.appendChild(r)});
+}
+$('aadd').onclick=async()=>{try{await api('addChannel',$('ap').value,$('an').value.trim(),$('au').value.trim());$('an').value='';$('au').value='';toast('تمت الإضافة');loadCh()}catch(e){toast(e.message)}};
+async function loadTeam(){
+  const us=await api('users');team=us.filter(u=>u.role!=='chairman');
+  const box=$('tl');box.textContent='';
+  if(!team.length)box.appendChild(el('p','note','لا يوجد أعضاء بعد.'));
+  team.forEach(u=>{
+    const c=el('div','row');c.appendChild(el('b','',u.name+' ('+u.username+')'));
+    const sel=el('select');[['manager',RN.manager],['officer',RN.officer]].forEach(([k,t])=>{const o=el('option','',t);o.value=k;if(k===u.role)o.selected=true;sel.appendChild(o)});
+    const sp=el('div');buildSpec(sp,u.specialty);
+    const sv=el('button','b','حفظ');sv.onclick=async()=>{try{await api('setRole',u.username,sel.value,getSpec(sp));toast('تم الحفظ');loadTeam()}catch(e){toast(e.message)}};
+    const pw=el('button','b','كلمة مرور');pw.onclick=async()=>{const p=prompt('كلمة المرور الجديدة (8 أحرف فأكثر):');if(p){try{await api('setPassword',u.username,p);toast('تم التغيير')}catch(e){toast(e.message)}}};
+    const d=el('button','b','حذف');d.onclick=async()=>{if(confirm('حذف '+u.name+'؟')){try{await api('delUser',u.username);loadTeam()}catch(e){toast(e.message)}}};
+    const w=el('div');w.style.cssText='width:100%;display:flex;gap:8px;flex-wrap:wrap;align-items:center';w.append(sel,sp,sv,pw,d);c.appendChild(w);box.appendChild(c)});
+}
+$('nadd').onclick=async()=>{try{await api('addUser',$('nu').value,$('nn').value,$('np').value,$('nr').value,getSpec($('nsp')));['nu','nn','np'].forEach(i=>$(i).value='');buildSpec($('nsp'),'');toast('تمت إضافة المستخدم');loadTeam()}catch(e){toast(e.message)}};
+$('lfile').onchange=async e=>{const f=e.target.files[0];if(!f)return;
+  try{let w=360,d;do{const i=await loadImg(await new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(f)}));
+    const h=Math.round(i.height*Math.min(i.width,w)/i.width),ww=Math.min(i.width,w),c=document.createElement('canvas');c.width=ww;c.height=h;c.getContext('2d').drawImage(i,0,0,ww,h);d=c.toDataURL('image/png');w=Math.round(w*.75)}while(d.length>58000&&w>60);
+    await api('setLogo',d);setLogo(d);toast('تم حفظ الشعار')}catch(x){toast(x.message||'تعذّر حفظ الشعار')}e.target.value=''};
+
+/* ---------- designer ---------- */
+const cv=$('cv'),x=cv.getContext('2d');
+function wrap(t,max){const w=t.split(/\s+/).filter(Boolean),L=[];let c='';for(const s of w){const tt=c?c+' '+s:s;if(x.measureText(tt).width>max&&c){L.push(c);c=s}else c=tt}if(c)L.push(c);return L}
+function drawD(){
+  const W=1200,H=627;
+  const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#4a0f24');g.addColorStop(1,'#8a2447');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  if(bgImg){const r=Math.max(W/bgImg.width,H/bgImg.height),w=bgImg.width*r,h=bgImg.height*r;x.drawImage(bgImg,(W-w)/2,(H-h)/2,w,h);const o=x.createLinearGradient(0,0,W,0);o.addColorStop(0,'rgba(60,8,28,.55)');o.addColorStop(1,'rgba(60,8,28,.88)');x.fillStyle=o;x.fillRect(0,0,W,H)}
+  else{x.fillStyle='rgba(255,255,255,.07)';x.beginPath();x.arc(90,50,250,0,7);x.fill();x.fillStyle='rgba(255,255,255,.05)';x.beginPath();x.arc(60,H+30,210,0,7);x.fill();
+    x.fillStyle='rgba(255,255,255,.12)';for(let i=0;i<6;i++)for(let j=0;j<4;j++){x.beginPath();x.arc(60+i*26,H-150+j*26,3,0,7);x.fill()}}
+  x.fillStyle='#f0d7de';x.fillRect(W-90,150,8,230);
+  if(logoImg){const lh=84,lw=Math.min(300,logoImg.width*lh/logoImg.height),lhh=logoImg.height*lw/logoImg.width;x.fillStyle='#fff';x.beginPath();x.roundRect?x.roundRect(W-130-lw-28,40,lw+28,lhh+28,14):x.rect(W-130-lw-28,40,lw+28,lhh+28);x.fill();x.drawImage(logoImg,W-130-lw-14,54,lw,lhh)}
+  x.fillStyle='#fff';x.direction='rtl';x.textAlign='right';x.textBaseline='alphabetic';
+  const R=W-130,mw=900;x.font='800 64px Cairo,Tahoma,sans-serif';
+  let y=230;wrap($('h1').value||' ',mw).slice(0,3).forEach(s=>{x.fillText(s,R,y);y+=86});
+  x.fillStyle='#f6dfe6';x.font='600 31px Cairo,Tahoma,sans-serif';y+=6;
+  wrap($('h2').value||' ',mw).slice(0,2).forEach(s=>{x.fillText(s,R,y);y+=48});
+  x.fillStyle='rgba(255,255,255,.3)';x.fillRect(130,H-60,W-260,2);
+  const d=cv.toDataURL('image/png');$('im').src=d;$('dl').href=d;return d;
+}
+let tm;['h1','h2'].forEach(i=>$(i).addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(drawD,120)}));
+$('bgfile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{bgImg=await loadImg(await fileToPng(f,1600));drawD()}catch(x){toast('تعذّر قراءة الصورة')}e.target.value=''};
+$('bgf').onclick=()=>{bgImg=null;drawD()};
+$('duse').onclick=()=>{
+  if(!me||!isC()){toast('حمّل الصورة أو انسخها لاستخدامها في المنشور');return}
+  setDraft(drawD());go('newp');toast('أُضيفت الصورة إلى المنشور الجديد')};
+$('dcopy').onclick=()=>copyImg(Promise.resolve(drawD()),'').then(()=>toast('تم نسخ الصورة'),()=>toast('اضغط مطولًا على الصورة لحفظها'));
+Promise.all([document.fonts.load('800 64px Cairo'),document.fonts.load('600 31px Cairo')]).then(drawD).catch(()=>{});
+drawD();
+start();
+</script>
+</body>
+</html>
