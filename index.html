@@ -183,7 +183,7 @@ input[type=color]{width:46px;height:34px;padding:2px}
 <div id="bar" class="hide"><div class="in" id="barin"></div></div>
 <div id="t"></div>
 <script>
-const API_URL='https://script.google.com/macros/s/AKfycbxL96BG32T0v0z0822M7qkZ50Aqn6si8a75mYMpVqo/dev';
+const API_URL='https://script.google.com/macros/s/AKfycbySRCHCyZ45f7hRYg2ju0l7yHqNGdw49FYPqsO1XnfDiSnLiPMqJnGdomYYH1lkUyV_/exec';const BASE=API_URL.trim(),EXPECT='V7';
 const $=id=>document.getElementById(id),E=encodeURIComponent;
 const PN={li:'\u0644\u064a\u0646\u0643\u062f \u0625\u0646',fb:'\u0641\u064a\u0633\u0628\u0648\u0643',ig:'\u0625\u0646\u0633\u062a\u062c\u0631\u0627\u0645',tw:'\u062a\u0648\u064a\u062a\u0631 / X'},RN={chairman:'\u0631\u0626\u064a\u0633 \u0645\u062c\u0644\u0633 \u0627\u0644\u0625\u062f\u0627\u0631\u0629',manager:'\u0645\u062f\u064a\u0631\u0629 \u0627\u0644\u062a\u0633\u0648\u064a\u0642',officer:'\u0645\u0633\u0626\u0648\u0644 \u062a\u0633\u0648\u064a\u0642'};
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
@@ -194,8 +194,8 @@ let shareLink='',me=null,chans=[],team=[],tasks=[],logo='',logoImg=null,draftImg
 function api(fn,...args){
   const fail=m=>Promise.reject(new Error(m));
   const handle=r=>{if(r&&r.error){if(r.error==='AUTH'&&me){try{localStorage.removeItem('pg_tok')}catch(e){}location.reload()}throw new Error(r.error==='AUTH'?'\u0627\u0646\u062a\u0647\u062a \u0627\u0644\u062c\u0644\u0633\u0629':r.error)}return r&&r.data};
-  if(API_URL.indexOf('https://')===0)
-    return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,token:tok,args})})
+  if(BASE.indexOf('https://')===0)
+    return fetch(BASE,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,token:tok,args})})
       .then(r=>r.text(),()=>fail('\u062a\u0639\u0630\u0651\u0631 \u0627\u0644\u0648\u0635\u0648\u0644 \u0625\u0644\u0649 \u0627\u0644\u062e\u0627\u062f\u0645. \u062a\u0623\u0643\u062f \u0645\u0646 \u0635\u062d\u0629 \u0631\u0627\u0628\u0637 Web app \u0641\u064a \u0623\u0648\u0644 \u0645\u0644\u0641 index.html\u060c \u0648\u0645\u0646 \u0623\u0646 \u062e\u064a\u0627\u0631 Who has access = Anyone.'))
       .then(t=>{let j;try{j=JSON.parse(t)}catch(e){throw new Error('\u0631\u062f\u0651 \u0627\u0644\u062e\u0627\u062f\u0645 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d. \u0641\u064a Apps Script \u0627\u062e\u062a\u0631 Deploy > Manage deployments > New version > Deploy\u060c \u0648\u062a\u0623\u0643\u062f \u0623\u0646 Who has access = Anyone.')}return handle(j)});
   if(typeof google!=='undefined'&&google.script)
@@ -216,6 +216,23 @@ const toBlob=d=>fetch(d).then(r=>r.blob());
 /* ---------- auth ---------- */
 let setupMode=false;
 let tAt=0;
+function badUrl(){
+  if(BASE.indexOf('https://script.google.com/')!==0||BASE.indexOf('/macros/')<0)return '\u0627\u0644\u0631\u0627\u0628\u0637 \u0627\u0644\u0645\u0648\u0636\u0648\u0639 \u0644\u0627 \u064a\u0634\u0628\u0647 \u0631\u0627\u0628\u0637 Web app. \u064a\u062c\u0628 \u0623\u0646 \u064a\u0628\u062f\u0623 \u0628\u0640 https://script.google.com/ \u0648\u064a\u062d\u062a\u0648\u064a /macros/s/';
+  if(BASE.slice(-5)!=='/exec')return '\u064a\u062c\u0628 \u0623\u0646 \u064a\u0646\u062a\u0647\u064a \u0627\u0644\u0631\u0627\u0628\u0637 \u0628\u0643\u0644\u0645\u0629 /exec (\u0648\u0644\u064a\u0633 /dev \u0623\u0648 \u063a\u064a\u0631\u0647\u0627).';
+  return '';
+}
+async function diag(){
+  const out=['\u0627\u0644\u0631\u0627\u0628\u0637 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645: '+BASE],bad=badUrl();
+  if(bad){out.push(bad);return out.join(String.fromCharCode(10))}
+  try{
+    const r=await fetch(BASE+'?ping=1'),t=await r.text();let j=null;try{j=JSON.parse(t)}catch(e){}
+    if(j&&j.ok){
+      out.push('\u0627\u0644\u062e\u0627\u062f\u0645 \u064a\u0639\u0645\u0644 (\u0625\u0635\u062f\u0627\u0631 \u0627\u0644\u0643\u0648\u062f: '+j.v+').');
+      out.push(j.v===EXPECT?'\u0627\u0644\u0643\u0648\u062f \u0645\u062d\u062f\u0651\u062b\u060c \u0644\u0643\u0646 \u0637\u0644\u0628\u0627\u062a \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u0645\u0631\u0641\u0648\u0636\u0629: \u0634\u063a\u0651\u0644 \u0627\u0644\u062f\u0627\u0644\u0629 keepWarm \u0645\u0631\u0629 \u0645\u0646 \u0645\u062d\u0631\u0631 Apps Script \u0648\u0627\u0645\u0646\u062d \u0627\u0644\u0623\u0630\u0648\u0646\u0627\u062a\u060c \u062b\u0645 Deploy > Manage deployments > New version > Deploy.':'\u0627\u0644\u0643\u0648\u062f \u0627\u0644\u0645\u0646\u0634\u0648\u0631 \u0623\u0642\u062f\u0645 \u0645\u0646 \u0627\u0644\u0645\u0637\u0644\u0648\u0628: \u0623\u0644\u0635\u0642 Code.gs \u0627\u0644\u062c\u062f\u064a\u062f \u062b\u0645 \u0627\u0639\u0645\u0644 New version.');
+    }else out.push('\u0627\u0644\u0631\u0627\u0628\u0637 \u064a\u0639\u064a\u062f \u0635\u0641\u062d\u0629 \u0648\u0644\u064a\u0633 \u0628\u064a\u0627\u0646\u0627\u062a. \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0631\u062f: '+t.split(String.fromCharCode(10)).join(' ').slice(0,90));
+  }catch(e){out.push('\u062a\u0639\u0630\u0651\u0631\u062a \u0642\u0631\u0627\u0621\u0629 \u0631\u062f \u0627\u0644\u0631\u0627\u0628\u0637. \u0627\u0644\u0623\u0633\u0628\u0627\u0628 \u0627\u0644\u0645\u062d\u062a\u0645\u0644\u0629: (1) Who has access \u0644\u064a\u0633\u062a Anyone\u060c (2) \u0627\u0644\u0643\u0648\u062f \u0627\u0644\u0645\u0646\u0634\u0648\u0631 \u0642\u062f\u064a\u0645 \u0648\u0644\u0645 \u062a\u0639\u0645\u0644 \u0644\u0647 New version\u060c (3) \u0627\u0644\u0631\u0627\u0628\u0637 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d.')}
+  return out.join(String.fromCharCode(10));
+}
 function load0(s){tAt=Date.now();chans=s.channels||[];tasks=s.tasks||[];team=(s.users||[]).filter(u=>u.role!=='chairman')}
 async function start(){
   try{
@@ -227,7 +244,8 @@ async function start(){
   }catch(e){
     $('auth').classList.remove('hide');$('at').textContent='\u062a\u0639\u0630\u0651\u0631 \u0627\u0644\u0627\u062a\u0635\u0627\u0644';
     document.querySelectorAll('#auth label,#auth input').forEach(n=>n.classList.add('hide'));
-    $('lerr').textContent=e.message;$('lgo').textContent='\u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629';$('lgo').onclick=()=>location.reload();
+    $('lerr').style.whiteSpace='pre-wrap';$('lerr').textContent=e.message;$('lgo').textContent='\u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629';$('lgo').onclick=()=>location.reload();
+    if(BASE.indexOf('https://')===0||BASE)diag().then(t=>{$('lerr').textContent=e.message+String.fromCharCode(10,10)+t});
   }
 }
 function setLogo(d){logo=d;$('lg').src=d;$('lg').classList.remove('hide');loadImg(d).then(i=>{logoImg=i;drawD();try{sync()}catch(e){}}).catch(()=>{})}
