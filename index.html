@@ -117,6 +117,20 @@ details>div{padding-bottom:14px}
         <div style="margin-top:10px"><button class="b pr" id="dsend">&#x625;&#x631;&#x633;&#x627;&#x644; &#x644;&#x644;&#x641;&#x631;&#x64A;&#x642;</button></div></div>
       </div>
       <div id="tasks" style="margin-top:12px"></div>
+      <details id="extbox" style="margin-top:12px">
+        <summary>&#x625;&#x636;&#x627;&#x641;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x635;&#x641;&#x62D; &#x644;&#x644;&#x627;&#x628;&#x62A;&#x648;&#x628; (&#x645;&#x644;&#x621; &#x627;&#x644;&#x646;&#x635; &#x648;&#x627;&#x644;&#x635;&#x648;&#x631;&#x629; &#x62A;&#x644;&#x642;&#x627;&#x626;&#x64A;&#x64B;&#x627;)</summary>
+        <div>
+          <div class="note" id="extst"></div>
+          <ol class="note" style="padding-right:18px;margin:8px 0">
+            <li>&#x627;&#x636;&#x63A;&#x637; &#xAB;&#x62A;&#x62D;&#x645;&#x64A;&#x644; &#x627;&#x644;&#x625;&#x636;&#x627;&#x641;&#x629;&#xBB; &#x62B;&#x645; &#x641;&#x64F;&#x643;&#x651; &#x636;&#x63A;&#x637; &#x627;&#x644;&#x645;&#x644;&#x641; &#x641;&#x64A; &#x645;&#x62C;&#x644;&#x62F; (&#x645;&#x62B;&#x644; &#x633;&#x637;&#x62D; &#x627;&#x644;&#x645;&#x643;&#x62A;&#x628;).</li>
+            <li>&#x641;&#x64A; Chrome &#x623;&#x648; Edge &#x627;&#x641;&#x62A;&#x62D; &#x627;&#x644;&#x639;&#x646;&#x648;&#x627;&#x646; <b dir="ltr">chrome://extensions</b> (&#x641;&#x64A; Edge: <b dir="ltr">edge://extensions</b>) &#x648;&#x641;&#x639;&#x651;&#x644; &#xAB;&#x648;&#x636;&#x639; &#x627;&#x644;&#x645;&#x637;&#x648;&#x651;&#x631;&#xBB;.</li>
+            <li>&#x627;&#x636;&#x63A;&#x637; &#xAB;&#x62A;&#x62D;&#x645;&#x64A;&#x644; &#x625;&#x636;&#x627;&#x641;&#x629; &#x63A;&#x64A;&#x631; &#x645;&#x636;&#x63A;&#x648;&#x637;&#x629;&#xBB; (Load unpacked) &#x648;&#x627;&#x62E;&#x62A;&#x631; &#x627;&#x644;&#x645;&#x62C;&#x644;&#x62F;.</li>
+            <li>&#x62D;&#x62F;&#x651;&#x62B; &#x635;&#x641;&#x62D;&#x629; &#x627;&#x644;&#x62A;&#x637;&#x628;&#x64A;&#x642; &#x628;&#x640; Ctrl+F5 &#x641;&#x62A;&#x635;&#x628;&#x62D; &#x627;&#x644;&#x62D;&#x627;&#x644;&#x629; &#xAB;&#x645;&#x62B;&#x628;&#x651;&#x62A;&#x629;&#xBB;.</li>
+          </ol>
+          <button class="b pr" id="extdl">&#x62A;&#x62D;&#x645;&#x64A;&#x644; &#x627;&#x644;&#x625;&#x636;&#x627;&#x641;&#x629;</button>
+          <div class="note">&#x62A;&#x639;&#x645;&#x644; &#x639;&#x644;&#x649; &#x635;&#x641;&#x62D;&#x62A;&#x64A; &#x644;&#x64A;&#x646;&#x643;&#x62F; &#x625;&#x646; &#x648;&#x641;&#x64A;&#x633;&#x628;&#x648;&#x643; &#x641;&#x642;&#x637;&#x60C; &#x648;&#x62A;&#x643;&#x62A;&#x628; &#x627;&#x644;&#x646;&#x635; &#x648;&#x62A;&#x636;&#x639; &#x627;&#x644;&#x635;&#x648;&#x631;&#x629; &#x641;&#x64A; &#x646;&#x627;&#x641;&#x630;&#x629; &#x627;&#x644;&#x646;&#x634;&#x631;. &#x644;&#x627; &#x62A;&#x636;&#x63A;&#x637; &#xAB;&#x646;&#x634;&#x631;&#xBB; &#x646;&#x64A;&#x627;&#x628;&#x629; &#x639;&#x646;&#x643; &#x648;&#x644;&#x627; &#x62A;&#x642;&#x631;&#x623; &#x643;&#x644;&#x645;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x631;&#x648;&#x631;. &#x642;&#x62F; &#x64A;&#x639;&#x631;&#x636; Chrome &#x62A;&#x646;&#x628;&#x64A;&#x647;&#x64B;&#x627; &#x639;&#x646; &#x625;&#x636;&#x627;&#x641;&#x627;&#x62A; &#x648;&#x636;&#x639; &#x627;&#x644;&#x645;&#x637;&#x648;&#x651;&#x631; &#x639;&#x646;&#x62F; &#x627;&#x644;&#x62A;&#x634;&#x63A;&#x64A;&#x644;&#x60C; &#x641;&#x627;&#x62E;&#x62A;&#x631; &#x627;&#x644;&#x625;&#x628;&#x642;&#x627;&#x621; &#x639;&#x644;&#x64A;&#x647;&#x627;.</div>
+        </div>
+      </details>
     </div>
 
     <!-- &#x627;&#x644;&#x645;&#x62A;&#x627;&#x628;&#x639;&#x629; -->
@@ -397,39 +411,86 @@ function target(c,text){
   return 'https://www.instagram.com/';
 }
 const MOBILE=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(window.matchMedia&&matchMedia('(pointer:coarse)').matches&&innerWidth<900);
+const ANDROID=/Android/i.test(navigator.userAgent),IOS=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+const PKG={li:'com.linkedin.android',fb:'com.facebook.katana',ig:'com.instagram.android',tw:'com.twitter.android'};
+const SCHEME={li:'linkedin://',fb:'fb://',ig:'instagram://app'};
 function canShareFiles(){try{return !!(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File(['x'],'a.png',{type:'image/png'})]}))}catch(e){return false}}
 const popupFeat=u=>(u.indexOf('/sharer/')>0||u.indexOf('share-offsite')>0)?'popup=yes,width=640,height=740,noopener':'noopener';
+function nav(u){location.href=u}
+/* browser helper (laptop): fills the text and the image inside the LinkedIn / Facebook post box */
+let EXT=false;
+function updExt(){const s=$('extst');if(s){s.textContent=EXT?'\u0627\u0644\u062d\u0627\u0644\u0629: \u0645\u062b\u0628\u0651\u062a\u0629 \u2714 \u2014 \u062a\u0639\u0645\u0644 \u0645\u0639 \u0644\u064a\u0646\u0643\u062f \u0625\u0646 \u0648\u0641\u064a\u0633\u0628\u0648\u0643':'\u0627\u0644\u062d\u0627\u0644\u0629: \u063a\u064a\u0631 \u0645\u062b\u0628\u0651\u062a\u0629 \u0628\u0639\u062f';s.style.color=EXT?'#2b6a3c':'var(--mu)'}}
+window.addEventListener('message',ev=>{if(ev.source===window&&ev.data&&ev.data.pgExt==='ready'){EXT=true;updExt()}});
+try{window.postMessage({pgPing:1},'*')}catch(e){}
+function bridgeSend(platform,text,img){try{window.postMessage({pgBridge:1,platform,text,img:img||null,ts:Date.now()},'*')}catch(e){}}
+/* phones: two ways to publish. direct = jump straight into the platform app (default), share = system share sheet with image + text */
+function getMode(){try{return localStorage.getItem('pg_mob')||'direct'}catch(e){return 'direct'}}
+function putMode(m){try{localStorage.setItem('pg_mob',m)}catch(e){}}
+function appLink(c,text){
+  const web=target(c,text);
+  if(ANDROID&&!c.url&&text&&(c.platform==='li'||c.platform==='fb'))return 'intent:#Intent;action=android.intent.action.SEND;type=text/plain;package='+PKG[c.platform]+';S.android.intent.extra.TEXT='+E(text)+';S.browser_fallback_url='+E(web)+';end';
+  if(ANDROID){try{const u=new URL(web);return 'intent://'+u.host+u.pathname+u.search+'#Intent;scheme=https;package='+PKG[c.platform]+';S.browser_fallback_url='+E(web)+';end'}catch(e){return web}}
+  if(IOS&&!c.url)return c.platform==='tw'?'twitter://post?message='+E(text):(SCHEME[c.platform]||web);
+  return web;
+}
+function directOpen(c,text,img){
+  if(img){const a=document.createElement('a');a.href=img;a.download='post-'+Date.now()+'.png';document.body.appendChild(a);a.click();a.remove()}
+  const l=appLink(c,text),web=target(c,text);
+  if(ANDROID)nav(l);
+  else if(IOS&&l!==web){nav(l);setTimeout(()=>{if(!document.hidden)window.open(web,'_blank')},1500)}
+  else window.open(web,'_blank',popupFeat(web));
+}
 // must run entirely inside the user's click
 function publish(c,getPost){
-  const post=getPost(),text=post.text||'',imgP=post.imgP;
+  const post=getPost(),text=post.text||'',imgP=post.imgP,img=post.img||null;
   if(!text&&!imgP){toast('\u0644\u0627 \u064a\u0648\u062c\u062f \u0645\u062d\u062a\u0648\u0649 \u0644\u0644\u0646\u0634\u0631');return}
-  const cp=text?copyText(text):Promise.resolve(true),u=target(c,text),share=!!(MOBILE&&navigator.share);
-  if(!share)window.open(u,'_blank',popupFeat(u));
-  cp.then(ok=>toast(share?'\u0627\u0636\u063a\u0637 \u00ab\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635\u00bb \u062b\u0645 \u0627\u062e\u062a\u0631 \u0627\u0644\u062a\u0637\u0628\u064a\u0642':ok?'\u062a\u0645 \u0646\u0633\u062e \u0627\u0644\u0646\u0635 \u2014 \u0627\u0644\u0635\u0642\u0647 (Ctrl+V) \u0641\u064a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0646\u0634\u0631':'\u062a\u0639\u0630\u0651\u0631 \u0627\u0644\u0646\u0633\u062e \u0627\u0644\u062a\u0644\u0642\u0627\u0626\u064a \u2014 \u0627\u0636\u063a\u0637 \u00ab\u0646\u0633\u062e \u0627\u0644\u0646\u0635\u00bb \u0628\u0627\u0644\u0623\u0633\u0641\u0644'));
-  showBar(text,imgP,c.platform,{u,share});
+  const cp=text?copyText(text):Promise.resolve(true),u=target(c,text);
+  const phone=MOBILE,direct=phone&&getMode()==='direct';
+  const ext=!phone&&EXT&&(c.platform==='li'||c.platform==='fb');
+  const textAuto=direct&&ANDROID&&!c.url&&text&&(c.platform==='li'||c.platform==='fb');
+  if(direct)directOpen(c,text,img);
+  else if(ext){ // the helper fills the post box; open the plain composer page (not the share dialog)
+    if(img)bridgeSend(c.platform,text,img);else if(imgP)imgP.then(d=>bridgeSend(c.platform,text,d),()=>bridgeSend(c.platform,text,null));else bridgeSend(c.platform,text,null);
+    window.open(c.url||(c.platform==='li'?'https://www.linkedin.com/feed/':'https://www.facebook.com/'),'_blank','noopener');
+  }
+  else if(!phone)window.open(u,'_blank',popupFeat(u));
+  cp.then(ok=>toast(ext?'\u0627\u0644\u0625\u0636\u0627\u0641\u0629 \u062a\u0645\u0644\u0623 \u0627\u0644\u0645\u0646\u0634\u0648\u0631 \u0627\u0644\u0622\u0646 \u2014 \u0627\u0646\u062a\u0638\u0631 \u062b\u0648\u0627\u0646\u064d \u062b\u0645 \u0631\u0627\u062c\u0639 \u0648\u0627\u0636\u063a\u0637 \u00ab\u0646\u0634\u0631\u00bb':phone?(direct?(textAuto?'\u0641\u064f\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u0648\u0627\u0644\u0646\u0635 \u0645\u0643\u062a\u0648\u0628 \u0641\u064a\u0647':ok?'\u0641\u064f\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u2014 \u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635 (\u0636\u063a\u0637\u0629 \u0645\u0637\u0648\u0651\u0644\u0629 \u2190 \u0644\u0635\u0642)':'\u0641\u064f\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u2014 \u0627\u0636\u063a\u0637 \u00ab\u0646\u0633\u062e \u0627\u0644\u0646\u0635\u00bb \u062b\u0645 \u0627\u0644\u0635\u0642\u0647'):'\u0627\u0636\u063a\u0637 \u00ab\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635\u00bb \u062b\u0645 \u0627\u062e\u062a\u0631 \u0627\u0644\u062a\u0637\u0628\u064a\u0642'):ok?'\u062a\u0645 \u0646\u0633\u062e \u0627\u0644\u0646\u0635 \u2014 \u0627\u0644\u0635\u0642\u0647 (Ctrl+V) \u0641\u064a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0646\u0634\u0631':'\u062a\u0639\u0630\u0651\u0631 \u0627\u0644\u0646\u0633\u062e \u0627\u0644\u062a\u0644\u0642\u0627\u0626\u064a \u2014 \u0627\u0636\u063a\u0637 \u00ab\u0646\u0633\u062e \u0627\u0644\u0646\u0635\u00bb \u0628\u0627\u0644\u0623\u0633\u0641\u0644'));
+  showBar(text,imgP,c.platform,{u,c,img,phone,direct,ext,textAuto});
   api('logPost',post.title||'',text,c.name,PN[c.platform]).catch(()=>{});
 }
 function showBar(text,imgP,p,o){
   const b=$('barin');b.textContent='';$('bar').classList.remove('hide');
   const link=firstUrl(text)||shareLink;
-  const dl=el('a','b sm','\u062a\u062d\u0645\u064a\u0644 \u0627\u0644\u0635\u0648\u0631\u0629');dl.download='post.png';
+  const dl=el('a','b sm','\u062a\u062d\u0645\u064a\u0644 \u0627\u0644\u0635\u0648\u0631\u0629');dl.download='post-'+Date.now()+'.png';
   const bt=el('button','b sm','\u0646\u0633\u062e \u0627\u0644\u0646\u0635');bt.onclick=()=>copyText(text).then(ok=>toast(ok?'\u062a\u0645 \u0646\u0633\u062e \u0627\u0644\u0646\u0635':'\u062a\u0639\u0630\u0651\u0631 \u0627\u0644\u0646\u0633\u062e'));
   const bx=el('button','b sm','\u0625\u063a\u0644\u0627\u0642');bx.onclick=()=>$('bar').classList.add('hide');
-  if(imgP){const im=el('img');imgP.then(d=>{im.src=d;dl.href=d},()=>{});}
-  if(o.share){ // phones: the system share sheet attaches the image AND the text inside the app's own post screen
-    b.appendChild(el('div','step','\u0627\u0636\u063a\u0637 \u00ab\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635\u00bb \u062b\u0645 \u0627\u062e\u062a\u0631 \u062a\u0637\u0628\u064a\u0642 '+PN[p]+': \u062a\u0635\u0644 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635 \u0645\u0639\u064b\u0627 \u0625\u0644\u0649 \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0646\u0634\u0631 \u062f\u0627\u062e\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642.'));
-    const sh=el('button','b pr','\u062c\u0627\u0631\u064d \u062a\u062c\u0647\u064a\u0632 \u0627\u0644\u0635\u0648\u0631\u0629\u2026');sh.disabled=true;let file=null;
-    const ready=()=>{sh.disabled=false;sh.textContent='\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635'};
-    if(imgP)imgP.then(toBlob).then(bl=>{file=new File([bl],'post.png',{type:'image/png'});ready()},ready);else ready();
-    sh.onclick=async()=>{try{const d={text};if(file&&canShareFiles())d.files=[file];await navigator.share(d)}catch(e){}};
-    const ob=el('button','b sm','\u0641\u062a\u062d \u0627\u0644\u0645\u0646\u0635\u0629 \u0641\u064a \u0627\u0644\u0645\u062a\u0635\u0641\u062d');ob.onclick=()=>window.open(o.u,'_blank',popupFeat(o.u));
-    b.append(sh,bt);if(imgP)b.appendChild(dl);b.append(ob,bx);return;
+  if(imgP)imgP.then(d=>{dl.href=d},()=>{});
+  if(o.phone){
+    const shareBtn=()=>{ // system share sheet: image + text together
+      const sh=el('button','b'+(o.direct?' sm':' pr'),'\u062c\u0627\u0631\u064d \u062a\u062c\u0647\u064a\u0632 \u0627\u0644\u0635\u0648\u0631\u0629\u2026');sh.disabled=true;let file=null;
+      const ready=()=>{sh.disabled=false;sh.textContent='\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635'};
+      if(imgP)imgP.then(toBlob).then(bl=>{file=new File([bl],'post.png',{type:'image/png'});ready()},ready);else ready();
+      sh.onclick=async()=>{try{const d={text};if(file&&canShareFiles())d.files=[file];await navigator.share(d)}catch(e){}};
+      return sh;
+    };
+    const mode=el('button','b sm',o.direct?'\u0627\u0644\u062a\u0628\u062f\u064a\u0644 \u0625\u0644\u0649 \u0648\u0636\u0639 \u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629':'\u0627\u0644\u062a\u0628\u062f\u064a\u0644 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0645\u0628\u0627\u0634\u0631');
+    mode.onclick=()=>{putMode(o.direct?'share':'direct');toast(o.direct?'\u0633\u064a\u064f\u0633\u062a\u062e\u062f\u0645 \u0648\u0636\u0639 \u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629 \u0641\u064a \u0627\u0644\u0645\u0631\u0629 \u0627\u0644\u0642\u0627\u062f\u0645\u0629':'\u0633\u064a\u064f\u0641\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u0645\u0628\u0627\u0634\u0631\u0629 \u0641\u064a \u0627\u0644\u0645\u0631\u0629 \u0627\u0644\u0642\u0627\u062f\u0645\u0629');$('bar').classList.add('hide')};
+    if(o.direct){
+      b.appendChild(el('div','step','\u0641\u064f\u062a\u062d \u062a\u0637\u0628\u064a\u0642 '+PN[p]+(o.textAuto?' \u0648\u0646\u0635\u0651\u0643 \u0645\u0643\u062a\u0648\u0628 \u0641\u064a\u0647 \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627':'. \u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635 (\u0636\u063a\u0637\u0629 \u0645\u0637\u0648\u0651\u0644\u0629 \u2190 \u0644\u0635\u0642)')+(o.img?(o.textAuto?' \u2014 \u0623\u0636\u0641':'\u060c \u062b\u0645 \u0623\u0636\u0641')+' \u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u062d\u0645\u0651\u0644\u0629 post-\u2026.png \u0645\u0646 \u0627\u0644\u0645\u0639\u0631\u0636 \u0623\u0648 \u0627\u0644\u062a\u0646\u0632\u064a\u0644\u0627\u062a.':'.')));
+      b.appendChild(bt);if(imgP&&navigator.share)b.appendChild(shareBtn());if(imgP)b.appendChild(dl);
+      const re=el('button','b sm','\u0641\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649');re.onclick=()=>directOpen(o.c,text,null);b.append(re,mode,bx);
+    }else{
+      b.appendChild(el('div','step','\u0627\u0636\u063a\u0637 \u00ab\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635\u00bb \u062b\u0645 \u0627\u062e\u062a\u0631 \u062a\u0637\u0628\u064a\u0642 '+PN[p]+': \u062a\u0635\u0644 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0646\u0635 \u0645\u0639\u064b\u0627.'));
+      if(navigator.share)b.appendChild(shareBtn());b.appendChild(bt);if(imgP)b.appendChild(dl);
+      const op=el('button','b sm','\u0641\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u0645\u0628\u0627\u0634\u0631\u0629');op.onclick=()=>directOpen(o.c,text,o.img);b.append(op,mode,bx);
+    }
+    return;
   }
   const H={li:link?'\u0641\u064f\u062a\u062d\u062a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629. \u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635 (Ctrl+V) \u0641\u064a \u062e\u0627\u0646\u0629 \u0627\u0644\u062a\u0639\u0644\u064a\u0642.':'\u0627\u0636\u063a\u0637 \u00ab\u0627\u0628\u062f\u0623 \u0645\u0646\u0634\u0648\u0631\u064b\u0627\u00bb \u062b\u0645 1) \u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635  2) \u0627\u0636\u063a\u0637 \u00ab\u0646\u0633\u062e \u0627\u0644\u0635\u0648\u0631\u0629\u00bb \u062b\u0645 \u0627\u0644\u0635\u0642\u0647\u0627.',
    fb:link?'\u0641\u064f\u062a\u062d\u062a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629. \u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635 (Ctrl+V) \u0641\u064a \u062e\u0627\u0646\u0629 \u00ab\u0642\u0644 \u0634\u064a\u0626\u064b\u0627\u2026\u00bb \u062b\u0645 \u0627\u062e\u062a\u0631 \u0623\u064a\u0646 \u062a\u0646\u0634\u0631.':'\u0627\u0636\u063a\u0637 \u00ab\u0645\u0627 \u0627\u0644\u0630\u064a \u064a\u062f\u0648\u0631 \u0641\u064a \u0628\u0627\u0644\u0643\u061f\u00bb \u0648\u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635\u060c \u062b\u0645 \u00ab\u0635\u0648\u0631\u0629/\u0641\u064a\u062f\u064a\u0648\u00bb \u0648\u0627\u062e\u062a\u0631 \u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u062d\u0645\u0651\u0644\u0629.',
    ig:'\u0627\u0636\u063a\u0637 \u00ab\u0625\u0646\u0634\u0627\u0621\u00bb (+) \u0648\u0627\u062e\u062a\u0631 \u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u062d\u0645\u0651\u0644\u0629\u060c \u062b\u0645 \u0627\u0644\u0635\u0642 \u0627\u0644\u0646\u0635 \u0641\u064a \u0627\u0644\u0648\u0635\u0641.',
    tw:'\u0627\u0644\u0635\u0642 \u0627\u0644\u0635\u0648\u0631\u0629 \u0641\u064a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u062a\u063a\u0631\u064a\u062f\u0629 \u0628\u0639\u062f \u0646\u0633\u062e\u0647\u0627 \u0645\u0646 \u0647\u0646\u0627.'};
-  b.appendChild(el('div','step',H[p]||H.li));
+  b.appendChild(el('div','step',o.ext?'\u0627\u0644\u0625\u0636\u0627\u0641\u0629 \u062a\u0645\u0644\u0623 \u0627\u0644\u0646\u0635 \u0648\u0627\u0644\u0635\u0648\u0631\u0629 \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627 \u0641\u064a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0646\u0634\u0631 (\u0627\u0646\u062a\u0638\u0631 \u062b\u0648\u0627\u0646\u064d). \u0631\u0627\u062c\u0639 \u062b\u0645 \u0627\u0636\u063a\u0637 \u00ab\u0646\u0634\u0631\u00bb. \u0625\u0646 \u0644\u0645 \u064a\u0638\u0647\u0631 \u0634\u064a\u0621 \u0641\u0627\u0633\u062a\u062e\u062f\u0645 \u0627\u0644\u0623\u0632\u0631\u0627\u0631 \u0647\u0646\u0627.':(H[p]||H.li)));
   if(imgP){const im=el('img');imgP.then(d=>{im.src=d},()=>{});b.appendChild(im)}
   b.appendChild(bt);
   if(imgP){const bi=el('button','b pr sm','\u0646\u0633\u062e \u0627\u0644\u0635\u0648\u0631\u0629');bi.onclick=()=>copyImg(imgP,'').then(()=>toast('\u062a\u0645 \u0646\u0633\u062e \u0627\u0644\u0635\u0648\u0631\u0629 \u2014 \u0627\u0644\u0635\u0642\u0647\u0627 \u0641\u064a \u0627\u0644\u0646\u0627\u0641\u0630\u0629'),()=>toast('\u062a\u0639\u0630\u0651\u0631 \u0646\u0633\u062e \u0627\u0644\u0635\u0648\u0631\u0629: \u0627\u0633\u062a\u062e\u062f\u0645 \u062a\u062d\u0645\u064a\u0644 \u0627\u0644\u0635\u0648\u0631\u0629'));b.append(bi,dl)}
@@ -510,10 +571,10 @@ function renderFollow(){
 /* ---------- posts: composer (chairman) ---------- */
 let editTask=null;
 function clearCmp(){editTask=null;$('ptxt').value='';$('ptitle').value='';pimg={kind:'default'}}
-function setMode(){const tk=!!editTask;$('cmphead').classList.toggle('hide',!tk);$('distwrap').classList.toggle('hide',tk||!isC());renderPgrid();renderPim()}
+function setMode(){const tk=!!editTask;$('cmphead').classList.toggle('hide',!tk);$('distwrap').classList.toggle('hide',tk||!isC());renderPgrid();renderPim();if(!$('cmp').classList.contains('hide'))preloadImg()}
 $('newp').onclick=()=>{
   if(editTask){clearCmp();setMode();$('cmp').classList.remove('hide');return}
-  $('cmp').classList.toggle('hide');if(!$('cmp').classList.contains('hide'))$('ptxt').focus();
+  $('cmp').classList.toggle('hide');if(!$('cmp').classList.contains('hide')){$('ptxt').focus();preloadImg()}
 };
 $('cmpclose').onclick=()=>{clearCmp();$('cmp').classList.add('hide');setMode()};
 function openTask(t){
@@ -532,19 +593,23 @@ function renderPim(){
   const e=effImg();$('pimth').classList.toggle('hide',!e);if(e)$('pimth').src=e.thumb;
   $('pimlab').textContent=e?e.label:(pimg.loading?'\u062c\u0627\u0631\u064d \u062a\u062d\u0645\u064a\u0644 \u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0646\u0634\u0648\u0631\u2026':pimg.kind==='none'?'\u0628\u062f\u0648\u0646 \u0635\u0648\u0631\u0629':'\u0644\u0627 \u062a\u0648\u062c\u062f \u0635\u0648\u0631\u0629 \u0627\u0641\u062a\u0631\u0627\u0636\u064a\u0629 (\u0623\u0636\u0641\u0647\u0627 \u0645\u0646 \u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u2190 \u0635\u0648\u0631 \u0627\u0644\u0634\u0631\u0643\u0627\u062a)');
   const L=$('pimlib');L.textContent='';
-  images.forEach(i=>{const m=el('img');m.src=i.thumb;m.title=i.name;m.className=(effImg()&&effImg().id===i.id)?'on':'';m.onclick=()=>{pimg={kind:'lib',id:i.id};renderPim();$('pimpick').classList.add('hide')};L.appendChild(m)});
+  images.forEach(i=>{const m=el('img');m.src=i.thumb;m.title=i.name;m.className=(effImg()&&effImg().id===i.id)?'on':'';m.onclick=()=>{pimg={kind:'lib',id:i.id};renderPim();preloadImg();$('pimpick').classList.add('hide')};L.appendChild(m)});
   $('pdes').classList.toggle('hide',!lastDesign);
 }
 $('pimchg').onclick=()=>$('pimpick').classList.toggle('hide');
+$('pimchg').addEventListener('click',()=>{});
 $('pnone').onclick=()=>{pimg={kind:'none'};renderPim();$('pimpick').classList.add('hide')};
 $('pdes').onclick=()=>{pimg={kind:'new',data:lastDesign};renderPim();$('pimpick').classList.add('hide')};
 $('pfile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{pimg={kind:'new',data:await fileToPng(f,1200)};renderPim();$('pimpick').classList.add('hide')}catch(x){toast('\u062a\u0639\u0630\u0651\u0631 \u0642\u0631\u0627\u0621\u0629 \u0627\u0644\u0635\u0648\u0631\u0629')}e.target.value=''};
-function libLoad(id){if(!libCache[id])libCache[id]=api('libImage',id).catch(x=>{delete libCache[id];throw x});return libCache[id]}
+const libData={};
+function libLoad(id){if(!libCache[id])libCache[id]=api('libImage',id).then(d=>{libData[id]=d;return d},x=>{delete libCache[id];throw x});return libCache[id]}
+function pimgNow(){if(pimg.kind==='none')return null;if(pimg.kind==='new')return pimg.data;const e=effImg();return e&&e.id?(libData[e.id]||null):null}
+function preloadImg(){const e=effImg();if(e&&e.id&&pimg.kind!=='new')libLoad(e.id).catch(()=>{})}
 function pimgP(){if(pimg.kind==='none')return null;if(pimg.kind==='new')return Promise.resolve(pimg.data);const e=effImg();return e&&e.id?libLoad(e.id):null}
 function openDesign(title){if(title){const e=els.find(x=>x.id==='title');if(e){e.text=title;sel='title';sync();drawD();commit()}}go('design')}
 function useDesign(d){lastDesign=d;pimg={kind:'new',data:d};$('cmp').classList.remove('hide');renderPim();go('posts');toast('\u0623\u064f\u0636\u064a\u0641\u062a \u0627\u0644\u0635\u0648\u0631\u0629 \u0625\u0644\u0649 \u0627\u0644\u0645\u0646\u0634\u0648\u0631 \u0627\u0644\u062c\u062f\u064a\u062f')}
 function myChans(){const sp=(me.specialty||'').split(',').filter(Boolean);return isC()||!sp.length?chans:chans.filter(c=>sp.indexOf(c.platform)>=0)}
-function renderPgrid(){const b=$('pgrid');b.textContent='';const list=editTask?chans.filter(x=>editTask.platforms.split(',').indexOf(x.platform)>=0):myChans();b.appendChild(pubGrid(list,()=>({text:$('ptxt').value.trim(),title:$('ptitle').value.trim(),imgP:pimgP()})))}
+function renderPgrid(){const b=$('pgrid');b.textContent='';const list=editTask?chans.filter(x=>editTask.platforms.split(',').indexOf(x.platform)>=0):myChans();b.appendChild(pubGrid(list,()=>({text:$('ptxt').value.trim(),title:$('ptitle').value.trim(),imgP:pimgP(),img:pimgNow()})))}
 function buildSpec(box,sel){box.textContent='';const s=(sel||'').split(',');['li','fb','ig','tw'].forEach(p=>{const l=el('label','ck');const i=document.createElement('input');i.type='checkbox';i.value=p;i.checked=s.indexOf(p)>=0;l.append(i,PN[p]);box.appendChild(l)})}
 const getSpec=box=>[...box.querySelectorAll('input:checked')].map(i=>i.value).join(',');
 function renderDist(){
@@ -610,6 +675,15 @@ $('bgup').onchange=async e=>{
   e.target.value='';
 };
 $('bgdel').onclick=async()=>{if(!confirm('\u062d\u0630\u0641 \u0627\u0644\u062e\u0644\u0641\u064a\u0629 \u0627\u0644\u0627\u0641\u062a\u0631\u0627\u0636\u064a\u0629 \u0648\u0627\u0644\u0639\u0648\u062f\u0629 \u0644\u0644\u0639\u0646\u0627\u0628\u064a\u061f'))return;try{await api('delBg');try{localStorage.removeItem('pg_bg')}catch(x){}bgV='';defBg=null;bgImg=null;bgDim=0;const s=await api('init');applyInit(s);saveCache(s);renderBgAdmin();drawD();syncBg();toast('\u062a\u0645 \u0627\u0644\u062d\u0630\u0641')}catch(e){toast(e.message)}};
+
+/* ---------- browser helper download ---------- */
+const EXT_ZIP='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';
+$('extdl').onclick=()=>{
+  try{const s=atob(EXT_ZIP),u=new Uint8Array(s.length);for(let i=0;i<s.length;i++)u[i]=s.charCodeAt(i);
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([u],{type:'application/zip'}));a.download='post-gate-extension.zip';document.body.appendChild(a);a.click();a.remove()}
+  catch(e){toast('\u062a\u0639\u0630\u0651\u0631 \u0627\u0644\u062a\u062d\u0645\u064a\u0644 \u0645\u0646 \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062d\u0629. \u0627\u0641\u062a\u062d \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u0645\u0646 \u0631\u0627\u0628\u0637 GitHub \u062b\u0645 \u0623\u0639\u062f \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629')}
+};
+updExt();
 
 /* ---------- admin: text archive ---------- */
 async function loadArchive(){
