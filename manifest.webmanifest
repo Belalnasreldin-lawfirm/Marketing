@@ -1,0 +1,14 @@
+{
+  "name": "بوابة النشر",
+  "short_name": "بوابة النشر",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7f8",
+  "theme_color": "#7b1e3a",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
