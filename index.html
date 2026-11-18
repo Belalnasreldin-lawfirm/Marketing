@@ -63,6 +63,8 @@ canvas#cv{width:100%;height:auto;border-radius:10px;border:1px solid var(--bd);t
 input[type=range]{padding:0;border:0;accent-color:var(--m)}
 input[type=color]{width:46px;height:34px;padding:2px}
 .rl{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mu);margin-top:6px}.rl span{min-width:92px}
+.rl{flex-wrap:wrap}
+.rl .ck{white-space:nowrap}
 .cell{display:flex;flex-direction:column;gap:2px}
 .cell a{font-size:12px;color:var(--m);text-align:center}
 .step{font-size:13px;color:var(--tx);width:100%;margin:0 0 4px}
@@ -124,7 +126,7 @@ canvas#cv:focus{outline:2px solid var(--m)}
             <button class="b sm" id="pnone">&#x628;&#x62F;&#x648;&#x646; &#x635;&#x648;&#x631;&#x629;</button>
           </div>
         </div>
-        <div id="designbox" class="hide" style="margin:10px 0"><div class="c">
+        <div id="designbox" class="hide" style="margin:10px 0"><div class="c" style="border:0;padding:0;margin:0;background:transparent">
         <div class="row" style="border:0;padding:0 0 6px"><h2 style="margin:0">&#x62A;&#x635;&#x645;&#x64A;&#x645; &#x627;&#x644;&#x635;&#x648;&#x631;&#x629;</h2><button class="b sm" id="dsgclose">&#x625;&#x63A;&#x644;&#x627;&#x642; &#x627;&#x644;&#x62A;&#x635;&#x645;&#x64A;&#x645;</button></div>
         <label>&#x645;&#x642;&#x627;&#x633; &#x627;&#x644;&#x635;&#x648;&#x631;&#x629;</label>
         <div class="g" id="sizes"></div>
@@ -143,12 +145,13 @@ canvas#cv:focus{outline:2px solid var(--m)}
         <div class="note">&#x627;&#x633;&#x62D;&#x628; &#x623;&#x64A; &#x639;&#x646;&#x635;&#x631; &#x644;&#x62A;&#x62D;&#x631;&#x64A;&#x643;&#x647; (&#x64A;&#x644;&#x62A;&#x635;&#x642; &#x628;&#x627;&#x644;&#x62E;&#x637;&#x648;&#x637; &#x627;&#x644;&#x625;&#x631;&#x634;&#x627;&#x62F;&#x64A;&#x629; &#x62A;&#x644;&#x642;&#x627;&#x626;&#x64A;&#x64B;&#x627;). &#x627;&#x644;&#x645;&#x631;&#x628;&#x639;&#x627;&#x62A; &#x641;&#x64A; &#x627;&#x644;&#x632;&#x648;&#x627;&#x64A;&#x627; &#x644;&#x644;&#x62A;&#x643;&#x628;&#x64A;&#x631; &#x648;&#x627;&#x644;&#x62A;&#x635;&#x63A;&#x64A;&#x631;&#x60C; &#x648;&#x641;&#x64A; &#x627;&#x644;&#x62C;&#x627;&#x646;&#x628;&#x64A;&#x646; &#x644;&#x639;&#x631;&#x636; &#x627;&#x644;&#x646;&#x635;&#x60C; &#x648;&#x627;&#x644;&#x62F;&#x627;&#x626;&#x631;&#x629; &#x623;&#x639;&#x644;&#x627;&#x647; &#x644;&#x644;&#x62A;&#x62F;&#x648;&#x64A;&#x631;. &#x627;&#x644;&#x623;&#x633;&#x647;&#x645; &#x62A;&#x62D;&#x631;&#x651;&#x643; &#x627;&#x644;&#x639;&#x646;&#x635;&#x631; &#x628;&#x62F;&#x642;&#x629; (Shift &#x623;&#x633;&#x631;&#x639;)&#x60C; &#x648;Delete &#x64A;&#x62D;&#x630;&#x641;&#x647;&#x60C; &#x648;Ctrl+D &#x64A;&#x646;&#x633;&#x62E;&#x647;. &#x627;&#x644;&#x62E;&#x637;&#x648;&#x637; &#x627;&#x644;&#x625;&#x631;&#x634;&#x627;&#x62F;&#x64A;&#x629; (&#x627;&#x644;&#x623;&#x632;&#x631;&#x642; &#x627;&#x644;&#x645;&#x62E;&#x636;&#x631;) &#x62A;&#x64F;&#x633;&#x62D;&#x628; &#x644;&#x645;&#x643;&#x627;&#x646;&#x647;&#x627;&#x60C; &#x648;&#x627;&#x633;&#x62D;&#x628;&#x647;&#x627; &#x62E;&#x627;&#x631;&#x62C; &#x627;&#x644;&#x635;&#x648;&#x631;&#x629; &#x644;&#x62D;&#x630;&#x641;&#x647;&#x627;. &#x648;&#x647;&#x64A; &#x643;&#x644;&#x647;&#x627; &#x644;&#x627; &#x62A;&#x638;&#x647;&#x631; &#x641;&#x64A; &#x627;&#x644;&#x635;&#x648;&#x631;&#x629; &#x627;&#x644;&#x645;&#x646;&#x634;&#x648;&#x631;&#x629;.</div>
         <div class="chips" id="chips"></div>
         <div id="ctl" class="c" style="margin:0;background:var(--rose)">
-          <div class="rl"><span>&#x645;&#x643;&#x627;&#x646; &#x627;&#x644;&#x639;&#x646;&#x635;&#x631;</span><div class="g" id="e_pos" style="flex:1;grid-template-columns:repeat(6,1fr)"></div></div>
+          <div class="rl"><span>&#x645;&#x643;&#x627;&#x646; &#x627;&#x644;&#x639;&#x646;&#x635;&#x631;</span><div class="g" id="e_pos" style="flex:1;grid-template-columns:repeat(3,1fr)"></div></div>
           <div class="rl"><span>&#x627;&#x644;&#x637;&#x628;&#x642;&#x627;&#x62A;</span><div class="g" id="e_lay" style="flex:1;grid-template-columns:repeat(4,1fr)"></div></div>
           <div id="c_text">
             <label>&#x627;&#x644;&#x646;&#x635;</label><textarea id="e_text" style="min-height:70px"></textarea>
             <div class="rl"><span>&#x645;&#x62D;&#x627;&#x630;&#x627;&#x629; &#x627;&#x644;&#x646;&#x635;</span><div class="g" id="e_al" style="flex:1;grid-template-columns:repeat(4,1fr)"></div></div>
-            <div class="rl"><span>&#x627;&#x644;&#x644;&#x648;&#x646;</span><input type="color" id="e_col"><label class="ck" style="margin:0"><input type="checkbox" id="e_bold">&#x62E;&#x637; &#x639;&#x631;&#x64A;&#x636;</label></div>
+            <div class="rl"><span>&#x627;&#x644;&#x644;&#x648;&#x646;</span><input type="color" id="e_col"><button class="b sm" id="e_pick">&#x642;&#x637;&#x651;&#x627;&#x631;&#x629; &#x627;&#x644;&#x623;&#x644;&#x648;&#x627;&#x646;</button><label class="ck" style="margin:0"><input type="checkbox" id="e_bold">&#x62E;&#x637; &#x639;&#x631;&#x64A;&#x636;</label></div>
+            <div id="e_sw" style="display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 6px"></div>
             <div class="rl"><span>&#x62D;&#x62C;&#x645; &#x627;&#x644;&#x62E;&#x637;</span><input type="range" id="e_fs" min="1.5" max="30" step="0.1"></div>
             <div class="rl"><span>&#x639;&#x631;&#x636; &#x627;&#x644;&#x646;&#x635;</span><input type="range" id="e_w" min="10" max="98" step="1"></div>
           </div>
@@ -988,6 +991,7 @@ function pt(ev){const r=cv.getBoundingClientRect();return [(ev.clientX-r.left)*c
 function toLocal(h,px,py){const dx=px-h.X,dy=py-h.Y,a=-h.rot*D2R;return [dx*Math.cos(a)-dy*Math.sin(a),dx*Math.sin(a)+dy*Math.cos(a)]}
 cv.addEventListener('pointerdown',ev=>{
   cv.focus();const [px,py]=pt(ev),k=rk();
+  if(picking){const hex=colorAt(px,py);useColor(hex);setPick(false);toast('\u062a\u0645 \u0627\u0644\u062a\u0642\u0627\u0637 \u0627\u0644\u0644\u0648\u0646 '+hex);return}
   if(showGuides)for(let i=guides.length-1;i>=0;i--){const g=guides[i],d=g.o==='v'?Math.abs(px-g.p*cv.width):Math.abs(py-g.p*cv.height);if(d<9*k){drag={m:'guide',i};cv.setPointerCapture(ev.pointerId);return}}
   const h=hits.find(x=>x.id===sel),e=cur();
   if(h&&e){
@@ -1039,6 +1043,26 @@ cv.addEventListener('keydown',ev=>{
   const st=ev.shiftKey?.02:.004,mv={ArrowLeft:[-st,0],ArrowRight:[st,0],ArrowUp:[0,-st],ArrowDown:[0,st]}[k];
   if(mv){ev.preventDefault();e.x=Math.min(1,Math.max(0,e.x+mv[0]));e.y=Math.min(1,Math.max(0,e.y+mv[1]));sync();drawD();commit()}
 });
+/* eyedropper: touch the picture to take a colour from it (works on phones too) */
+let picking=false,recent=[];
+try{recent=JSON.parse(localStorage.getItem('pg_colors')||'[]').filter(h=>/^#[0-9a-f]{6}$/i.test(h)).slice(0,8)}catch(e){}
+function renderSw(){const b=$('e_sw');b.textContent='';recent.forEach(h=>{const s=el('button','');s.style.cssText='width:32px;height:32px;border-radius:50%;border:2px solid var(--bd);cursor:pointer;background:'+h;s.title=h;s.onclick=()=>useColor(h,false);b.appendChild(s)})}
+function useColor(hex,remember){
+  const e=cur();if(e&&e.type==='text'){e.color=hex;$('e_col').value=hex;drawD();commit()}
+  if(remember!==false){const i=recent.indexOf(hex);if(i>=0)recent.splice(i,1);recent.unshift(hex);recent=recent.slice(0,8);try{localStorage.setItem('pg_colors',JSON.stringify(recent))}catch(x){}renderSw()}
+}
+function setPick(on){picking=on;cv.style.cursor=on?'crosshair':'';$('e_pick').classList.toggle('on',on);if(on)toast('\u0627\u0644\u0645\u0633 \u0623\u064a \u0645\u0643\u0627\u0646 \u0641\u064a \u0627\u0644\u0635\u0648\u0631\u0629 \u0644\u0627\u0644\u062a\u0642\u0627\u0637 \u0644\u0648\u0646\u0647')}
+function colorAt(px,py){ // colour of the finished picture (without the editing aids) at that point
+  const o=document.createElement('canvas');o.width=cv.width;o.height=cv.height;const keep=hits;drawTo(o.getContext('2d'),cv.width,cv.height,false);hits=keep;
+  const d=o.getContext('2d').getImageData(Math.max(0,Math.min(cv.width-1,Math.floor(px))),Math.max(0,Math.min(cv.height-1,Math.floor(py))),1,1).data;
+  return '#'+[d[0],d[1],d[2]].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+$('e_pick').onclick=async()=>{
+  const e=cur();if(!e||e.type!=='text'){toast('\u0627\u062e\u062a\u0631 \u0646\u0635\u064b\u0627 \u0623\u0648\u0644\u064b\u0627 \u062b\u0645 \u0627\u0633\u062a\u062e\u062f\u0645 \u0627\u0644\u0642\u0637\u0651\u0627\u0631\u0629');return}
+  if(window.EyeDropper&&!MOBILE){try{const r=await new EyeDropper().open();useColor(r.sRGBHex);toast('\u062a\u0645 \u0627\u0644\u062a\u0642\u0627\u0637 \u0627\u0644\u0644\u0648\u0646 '+r.sRGBHex)}catch(x){}return} // computers: any pixel on the screen
+  setPick(!picking);
+};
+renderSw();
 /* guide lines (like a ruler) */
 function gUpd(){$('gtog').textContent='\u0627\u0644\u062e\u0637\u0648\u0637 \u0627\u0644\u0625\u0631\u0634\u0627\u062f\u064a\u0629: '+(showGuides?'\u062a\u0639\u0645\u0644':'\u0645\u062e\u0641\u064a\u0629');$('gtog').classList.toggle('on',showGuides)}
 $('gtog').onclick=()=>{showGuides=!showGuides;gUpd();drawD()};
